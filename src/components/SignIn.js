@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import cookie from "cookie";
-
+import axios from "axios";
 import "../SignIn.css";
 import "../preload.css";
 
@@ -23,14 +23,31 @@ const SignIn = () => {
     });
   };
 
-  const login = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    document.cookie = cookie.serialize("loggedIn", "true", {
-      maxAge: 60,
-    });
-    navigate("/dashboard");
+    // Replace this with your own logic to check username and password
+    const validUsername = "Jay_ch";
+    const validPassword = "test123";
+
+    if (state.username === validUsername && state.password === validPassword) {
+      document.cookie = cookie.serialize("loggedIn", "true", {
+        maxAge: 60,
+      });
+      navigate("/dashboard");
+    } else {
+      alert("Invalid username or password");
+    }
   };
+
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+
+  //   document.cookie = cookie.serialize("loggedIn", "true", {
+  //     maxAge: 60,
+  //   });
+  //   navigate("/dashboard");
+  // };
 
   //preLoad
   const [loading, setLoading] = useState(false);
@@ -81,7 +98,7 @@ const SignIn = () => {
               <label htmlFor="tab-2" className="tab">
                 Sign Up
               </label>
-              <form className="login-form" onSubmit={login}>
+              <form className="login-form" onSubmit={handleLogin}>
                 <div className="sign-in-htm">
                   <div className="group">
                     {/* <label htmlFor="user" className="label">

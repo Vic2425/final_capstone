@@ -8,7 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-const AddReminder = ({ reminderTotal, addReminder }) => {
+const AddReminder = ({ user, reminderTotal, addReminder }) => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -60,8 +60,8 @@ const AddReminder = ({ reminderTotal, addReminder }) => {
               src="https://cdn-icons-png.flaticon.com/512/666/666201.png"
               alt="icon"
             ></img>
+            <p>Jay</p>
           </div>
-          <p>user name</p>
           <h1>Reminders:</h1>
           <div className="logOut">
             <Link to="/">

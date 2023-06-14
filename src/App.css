@@ -3,7 +3,6 @@
 }
 body {
   margin: 0;
-  font-size: 0.88rem;
   font-weight: 400;
   line-height: 1.5;
   color: #f5f3f7;
@@ -21,8 +20,8 @@ body {
   background-color: #e9e4ed;
   box-shadow: inset 0px 0px 5px #61398f;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   position: relative;
   top: 15px;
   left: 70px;
@@ -34,16 +33,24 @@ body {
   object-fit: contain;
   object-position: center;
 }
+.imgBx p {
+  color: #f5f3f7;
+  position: relative;
+  font-size: 20px;
+  top: -80%;
+  left: 95px;
+  transform: translate(-50%, -50%);
+}
 .logOut {
   position: absolute;
   top: 28%;
   left: 85%;
   transform: translate(-50%, -50%);
 }
+
 .hide {
   display: none;
   position: relative;
-  /* color: #f5f3f7; */
   left: 35%;
   top: 5px;
   font-size: 12px;
@@ -62,14 +69,7 @@ body {
   border-radius: 15px 15px 0 0;
   position: relative;
 }
-.header p {
-  color: #f5f3f7;
-  position: absolute;
-  font-size: 16px;
-  top: 18%;
-  left: 180px;
-  transform: translate(-50%, -50%);
-}
+
 .header h1 {
   color: #f5f3f7;
   position: absolute;
@@ -84,6 +84,7 @@ body {
   transform: translate(-50%, -50%);
 }
 .add-btn button {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -122,12 +123,14 @@ input.check {
   top: 45%;
   left: 10%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 .delIcon {
   position: absolute;
   top: 50%;
   left: 85%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .editIcon {
@@ -136,6 +139,7 @@ input.check {
   left: 80%;
   transform: translate(-50%, -50%);
   padding-right: 25px;
+  cursor: pointer;
 }
 
 input {
@@ -223,13 +227,43 @@ input {
   background-color: #61398f;
 }
 
-@media (max-width: 480px) {
-  .dialog-container {
-    width: 90%;
+@media (max-width: 767px) {
+  .header,
+  .list {
+    width: 100%;
   }
-  .submit-btn,
-  .txtarea,
-  .txtinput {
-    width: 90%;
+  .imgBx p {
+    font-size: 18px;
+    top: -90%;
+    left: 150%;
   }
+  .imgBx {
+    height: 45px;
+    width: 45px;
+    top: 25px;
+    left: 10%;
+  }
+  .header h1 {
+    font-size: 25px;
+    left: 20%;
+  }
+  .logOut, .add-btn, .delIcon {
+    left: 90%;
+  }
+  .editIcon {
+    left: 85%
+  }
+  input.check {
+    left: 8%
+  }
+  .note-box {
+    left: 22%;
+  }
+  .content-middle {
+    font-size: 12px;
+  }
+  .details,
+.date {
+  font-size: 10px;
+}
 }
