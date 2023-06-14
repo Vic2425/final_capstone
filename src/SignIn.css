@@ -1,9 +1,6 @@
 body {
   margin: 0;
   color: #6a6f8c;
-  background: url("https://static.vecteezy.com/system/resources/previews/006/856/963/original/reminder-popup-bell-notification-alert-or-alarm-icon-sign-or-symbol-for-application-website-ui-on-yellow-background-3d-rendering-illustration-free-photo.jpg")
-    no-repeat fixed center;
-  background-size: cover;
   font: 600 16px/18px "Open Sans", sans-serif;
 }
 *,

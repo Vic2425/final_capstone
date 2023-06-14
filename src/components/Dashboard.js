@@ -24,7 +24,6 @@ const Dashboard = (props) => {
     console.log("Updated Reminder 2:", updatedReminder);
 
     props.updateEdit(index, updatedReminder);
-
     console.log("After dispatching updateEdit action");
     setEditIndex(-1);
   };
