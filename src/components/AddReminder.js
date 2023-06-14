@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  TextField,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
@@ -81,56 +74,62 @@ const AddReminder = ({ reminderTotal, addReminder }) => {
           </div>
         </div>
       </div>
-      <div>
-        <Dialog open={open} onClose={toggleDialog}>
-          <DialogTitle>Add New Reminder</DialogTitle>
-          <DialogContent className="">
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "350px",
-              }}
-              className="form"
-            >
-              <TextField
-                id="title"
-                placeholder="Title"
-                value={title}
-                onChange={handleTxtChange}
-                required
-                className="txtinput"
-              />
-              <TextField
-                id="description"
-                placeholder="Description"
-                value={description}
-                onChange={handleTxtChange}
-                required
-                className="txtinput"
-              />
-              <DatePicker
-                type="date"
-                minDate={new Date()}
-                selected={date}
-                onChange={(date) => {
-                  setDate(date);
+      {open && (
+        <div className="dialog-overlay">
+          <div className="dialog-container">
+            <div className="dialog-title">Add New Reminder</div>
+            <div className="dialog-content">
+              <form
+                onSubmit={handleSubmit}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "500px",
                 }}
-                dateFormat="Pp"
-                showTimeSelect
-                timeFormat="p"
-                shouldCloseOnSelect={false}
-              />
-              <br />
+                className="form"
+              >
+                <input
+                  id="title"
+                  placeholder="Title"
+                  value={title}
+                  onChange={handleTxtChange}
+                  required
+                  className="txtinput"
+                />
+                <textarea
+                  id="description"
+                  placeholder="Description"
+                  value={description}
+                  onChange={handleTxtChange}
+                  required
+                  className="txtarea"
+                  style={{ cols: 5 }}
+                />
+                <DatePicker
+                  type="date"
+                  minDate={new Date()}
+                  selected={date}
+                  onChange={(date) => {
+                    setDate(date);
+                  }}
+                  dateFormat="Pp"
+                  showTimeSelect
+                  timeFormat="p"
+                  shouldCloseOnSelect={false}
+                />
+                <br />
 
-              <Button variant="contained" color="primary" type="submit">
-                Submit
-              </Button>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </div>
+                <button type="submit" className="submit-btn">
+                  Submit
+                </button>
+                <button className="cancel-btn" onClick={toggleDialog}>
+                  Cancel
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

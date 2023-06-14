@@ -19,12 +19,7 @@ const Dashboard = (props) => {
   };
 
   const handleSaveEdit = (index, updatedReminder) => {
-    console.log("Before dispatching updateEdit action");
-    console.log("Index:", index);
-    console.log("Updated Reminder 2:", updatedReminder);
-
     props.updateEdit(index, updatedReminder);
-    console.log("After dispatching updateEdit action:", updatedReminder);
     setEditIndex(-1);
   };
 
@@ -43,27 +38,17 @@ const Dashboard = (props) => {
               />
             </div>
             <div className="note-box">
-              {editIndex === index ? (
-                <EditForm
-                  reminder={reminder}
-                  onSave={(updatedReminder) =>
-                    handleSaveEdit(index, updatedReminder)
-                  }
-                  onCancel={handleCancelEdit}
-                />
-              ) : (
-                <span
-                  style={{
-                    textDecoration: reminder.isDone ? "line-through" : "",
-                  }}
-                >
-                  <div className="content-middle">{reminder.title}</div>
-                  <div className="details">{reminder.description}</div>
-                  <div className="date">
-                    {moment(reminder.date).format("MMMM Do YYYY, h:mm a")}
-                  </div>
-                </span>
-              )}
+              <span
+                style={{
+                  textDecoration: reminder.isDone ? "line-through" : "",
+                }}
+              >
+                <div className="content-middle">{reminder.title}</div>
+                <div className="details">{reminder.description}</div>
+                <div className="date">
+                  {moment(reminder.date).format("MMMM Do YYYY, h:mm a")}
+                </div>
+              </span>
             </div>
             <div className="editIcon">
               <EditRoundedIcon
@@ -80,6 +65,14 @@ const Dashboard = (props) => {
           </div>
         ))}
       </div>
+      {editIndex !== -1 && (
+        <EditForm
+          reminder={props.reminders[editIndex]}
+          index={editIndex}
+          handleCancelEdit={handleCancelEdit}
+          handleSaveEdit={handleSaveEdit}
+        />
+      )}
     </>
   );
 };

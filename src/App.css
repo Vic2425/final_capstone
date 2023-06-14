@@ -155,12 +155,81 @@ input {
 }
 
 /* Dialog box */
-.css-ypiqx9-MuiDialogContent-root {
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  align-items: center;
+  z-index: 9999;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
-.form {
+
+.dialog-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+}
+
+.dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dialog-content {
   display: flex;
   flex-direction: column;
+}
+
+.txtinput {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 92%;
+}
+
+.txtarea {
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  resize: vertical;
+  min-height: 200px;
+  width: 92%;
+}
+
+.submit-btn,
+.save-btn,
+.cancel-btn {
+  padding: 8px 16px;
+  background-color: #8b5fbf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  width: 92%;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.submit-btn:hover,
+.save-btn:hover,
+.cancel-btn:hover {
+  background-color: #61398f;
+}
+
+@media (max-width: 480px) {
+  .dialog-container {
+    width: 90%;
+  }
+  .submit-btn,
+  .txtarea,
+  .txtinput {
+    width: 90%;
+  }
 }

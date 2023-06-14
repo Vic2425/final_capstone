@@ -14,11 +14,17 @@ const reminders = (state = reminders, action) => {
       return newList;
     case "UPDATE_EDIT":
       console.log("UPDATE_EDIT action received");
-      return state.map((reminder) =>
-        reminder.id === action.value
-          ? { ...reminder, ...action.updatedReminder }
-          : reminder
-      );
+    case "UPDATE_EDIT":
+      console.log("UPDATE_EDIT action received");
+      const updatedState = [...state];
+      updatedState[action.index] = action.updatedReminder;
+      return updatedState;
+
+    // return state.map((reminder) =>
+    //   reminder.id === action.value.index
+    //     ? { ...reminder, ...action.value.updatedReminder }
+    //     : reminder
+    // );
     default:
       return state;
   }

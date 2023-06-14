@@ -1,48 +1,80 @@
 import React, { useState } from "react";
-import moment from "moment";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "../App.css";
 
-const EditForm = ({ reminder, onSave, onCancel }) => {
-  const [updatedReminder, setUpdatedReminder] = useState({
-    title: reminder.title,
-    description: reminder.description,
-    date: reminder.date,
-  });
+const EditForm = ({ reminder, index, handleCancelEdit, handleSaveEdit }) => {
+  const [updatedTitle, setUpdatedTitle] = useState(reminder.title);
+  const [updatedDescription, setUpdatedDescription] = useState(
+    reminder.description
+  );
+  const [updatedDate, setUpdatedDate] = useState(new Date(reminder.date));
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUpdatedReminder((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleTitleChange = (event) => {
+    setUpdatedTitle(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setUpdatedDescription(event.target.value);
   };
 
   const handleSave = () => {
-    onSave(updatedReminder);
+    const updatedReminder = {
+      ...reminder,
+      title: updatedTitle,
+      description: updatedDescription,
+      date: updatedDate,
+    };
+    handleSaveEdit(index, updatedReminder);
   };
 
   return (
-    <>
-      <input
-        type="text"
-        name="title"
-        value={updatedReminder.title}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="description"
-        value={updatedReminder.description}
-        onChange={handleInputChange}
-      />
-      <input
-        type="datetime-local"
-        name="date"
-        value={moment(updatedReminder.date).format("YYYY-MM-DDTHH:mm")}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleSave}>Save</button>
-      <button onClick={onCancel}>Cancel</button>
-    </>
+    <div className="dialog-overlay">
+      <div className="dialog-container">
+        <div className="dialog-title">Edit Reminder</div>
+        <div className="dialog-content">
+          <form
+            className="form"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "500px",
+            }}
+          >
+            <input
+              type="text"
+              value={updatedTitle}
+              onChange={handleTitleChange}
+              className="txtinput"
+              required
+            />
+            <textarea
+              value={updatedDescription}
+              onChange={handleDescriptionChange}
+              className="txtarea"
+              required
+              style={{ cols: 5 }}
+            />
+            <DatePicker
+              selected={updatedDate}
+              onChange={(date) => setUpdatedDate(date)}
+              dateFormat="Pp"
+              showTimeSelect
+              timeFormat="p"
+              shouldCloseOnSelect={false}
+            />
+            <br />
+
+            <button className="save-btn" onClick={handleSave}>
+              Save
+            </button>
+            <button className="cancel-btn" onClick={handleCancelEdit}>
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

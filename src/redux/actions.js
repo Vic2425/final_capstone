@@ -25,7 +25,7 @@ export const updateEdit = (index, updatedReminder) => {
   console.log("Updated Reminder:", updatedReminder);
   return {
     type: "UPDATE_EDIT",
-    value: index,
+    index,
     updatedReminder,
   };
 };
