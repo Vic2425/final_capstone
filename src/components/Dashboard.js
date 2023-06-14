@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import AddReminder from "../containers/AddReminder";
+import EditForm from "../containers/EditForm";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import moment from "moment";
-import EditForm from "./EditForm";
 
 import "../App.css";
 
@@ -19,7 +19,13 @@ const Dashboard = (props) => {
   };
 
   const handleSaveEdit = (index, updatedReminder) => {
-    props.editReminder(index, updatedReminder);
+    console.log("Before dispatching updateEdit action");
+    console.log("Index:", index);
+    console.log("Updated Reminder 2:", updatedReminder);
+
+    props.updateEdit(index, updatedReminder);
+
+    console.log("After dispatching updateEdit action");
     setEditIndex(-1);
   };
 
@@ -55,9 +61,7 @@ const Dashboard = (props) => {
                   <div className="content-middle">{reminder.title}</div>
                   <div className="details">{reminder.description}</div>
                   <div className="date">
-                    {moment(new Date(reminder.date))
-                      .format("MMMM Do YYYY, h:mm a")
-                      .toString()}
+                    {moment(reminder.date).format("MMMM Do YYYY, h:mm a")}
                   </div>
                 </span>
               )}

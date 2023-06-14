@@ -20,7 +20,6 @@ const AddReminder = ({ reminderTotal, addReminder }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
-
   const toggleDialog = () => setOpen(!open);
 
   const handleTxtChange = (e) => {

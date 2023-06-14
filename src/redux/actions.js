@@ -19,9 +19,13 @@ export const removeReminder = (index) => {
   };
 };
 
-export const checkEvent = (reminder) => {
+export const updateEdit = (index, updatedReminder) => {
+  console.log("updateEdit action creator called");
+  console.log("Index:", index);
+  console.log("Updated Reminder:", updatedReminder);
   return {
-    type: "CHECK_EVENT",
-    value: reminder,
+    type: "UPDATE_EDIT",
+    value: index,
+    updatedReminder,
   };
 };

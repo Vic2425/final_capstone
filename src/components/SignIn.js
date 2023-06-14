@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import cookie from "cookie";
-import { ClockLoader } from "react-spinners";
 
 import "../SignIn.css";
 import "../preload.css";
@@ -40,14 +39,23 @@ const SignIn = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 4000);
   }, []);
 
   return (
     <>
       {loading ? (
-        <div className="preload">
-          <ClockLoader color={"#61398F"} loading={loading} size={100} />
+        <div className="box">
+          <img
+            className="bell"
+            src={process.env.PUBLIC_URL + "/Bell.png"}
+            alt="remider bell"
+          />
+          <img
+            className="R"
+            src={process.env.PUBLIC_URL + "/R_logo_color.png"}
+            alt="Rlogo"
+          />
         </div>
       ) : (
         <div className="login-wrap">
@@ -69,9 +77,9 @@ const SignIn = () => {
             <form className="login-form" onSubmit={login}>
               <div className="sign-in-htm">
                 <div className="group">
-                  <label htmlFor="user" className="label">
+                  {/* <label htmlFor="user" className="label">
                     Username
-                  </label>
+                  </label> */}
                   <input
                     id="user"
                     onChange={handleTextChange}
@@ -80,12 +88,10 @@ const SignIn = () => {
                     label="Username"
                     type="text"
                     className="input"
+                    placeholder="Username"
                   />
                 </div>
                 <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Password
-                  </label>
                   <input
                     id="pass"
                     onChange={handleTextChange}
@@ -94,6 +100,7 @@ const SignIn = () => {
                     type="password"
                     className="input"
                     data-type="password"
+                    placeholder="Password"
                   />
                 </div>
                 <div className="group">
@@ -116,38 +123,38 @@ const SignIn = () => {
               </div>
               <div className="sign-up-htm">
                 <div className="group">
-                  <label htmlFor="user" className="label">
-                    Username
-                  </label>
-                  <input id="user2" type="text" className="input" />
+                  <input
+                    id="user2"
+                    type="text"
+                    className="input"
+                    placeholder="Username"
+                  />
                 </div>
                 <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Password
-                  </label>
                   <input
                     id="pass2"
                     type="password"
                     className="input"
                     data-type="password"
+                    placeholder="Password"
                   />
                 </div>
                 <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Repeat Password
-                  </label>
                   <input
                     id="repeatpass"
                     type="password"
                     className="input"
                     data-type="password"
+                    placeholder="Repeat Password"
                   />
                 </div>
                 <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Email Address
-                  </label>
-                  <input id="email" type="text" className="input" />
+                  <input
+                    id="email"
+                    type="text"
+                    className="input"
+                    placeholder="E-mail"
+                  />
                 </div>
                 <div className="hr"></div>
                 <div className="group">

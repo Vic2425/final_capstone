@@ -12,19 +12,16 @@ const reminders = (state = reminders, action) => {
       const newList = [...state];
       newList.splice(action.value, 1);
       return newList;
-
+    case "UPDATE_EDIT":
+      console.log("UPDATE_EDIT action received");
+      return state.map((reminder) =>
+        reminder.id === action.value
+          ? { ...reminder, ...action.updatedReminder }
+          : reminder
+      );
     default:
       return state;
   }
 };
 
-const eventReducer = (state = null, action) => {
-  switch (action.type) {
-    case "CHECK_EVENT":
-      return action.value;
-    default:
-      return state;
-  }
-};
-
-export default combineReducers({ reminders, eventReducer });
+export default combineReducers({ reminders });
