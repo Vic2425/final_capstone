@@ -25,19 +25,6 @@ export default {
       date: "05/20/2023 10:00 AM",
       isDone: false,
     },
-    {
-      id: "04",
-      title: "Turn in Loom Video",
-      description: "create 3-min video to present the App",
-      date: "06/14/2023 09:00 PM",
-      isDone: false,
-    },
-    {
-      id: "05",
-      title: "Graduation Day",
-      description: " ",
-      date: "05/10/2023 06:00 PM",
-      isDone: false,
-    },
+   
   ],
 };

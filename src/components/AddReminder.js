@@ -60,7 +60,7 @@ const AddReminder = ({ user, reminderTotal, addReminder }) => {
               src="https://cdn-icons-png.flaticon.com/512/666/666201.png"
               alt="icon"
             ></img>
-            <p>Jay</p>
+            {/* <p>Jay</p> */}
           </div>
           <h1>Reminders:</h1>
           <div className="logOut">

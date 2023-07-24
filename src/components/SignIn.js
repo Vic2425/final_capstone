@@ -23,31 +23,31 @@ const SignIn = () => {
     });
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    // Replace this with your own logic to check username and password
-    const validUsername = "Jay_ch";
-    const validPassword = "test123";
-
-    if (state.username === validUsername && state.password === validPassword) {
-      document.cookie = cookie.serialize("loggedIn", "true", {
-        maxAge: 60,
-      });
-      navigate("/dashboard");
-    } else {
-      alert("Invalid username or password");
-    }
-  };
-
-  // const handleLogin = (e) => {
+  // const handleLogin = async (e) => {
   //   e.preventDefault();
 
-  //   document.cookie = cookie.serialize("loggedIn", "true", {
-  //     maxAge: 60,
-  //   });
-  //   navigate("/dashboard");
+  //   // Replace this with your own logic to check username and password
+  //   const validUsername = "Jay_ch";
+  //   const validPassword = "test123";
+
+  //   if (state.username === validUsername && state.password === validPassword) {
+  //     document.cookie = cookie.serialize("loggedIn", "true", {
+  //       maxAge: 60,
+  //     });
+  //     navigate("/dashboard");
+  //   } else {
+  //     alert("Invalid username or password");
+  //   }
   // };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    document.cookie = cookie.serialize("loggedIn", "true", {
+      maxAge: 60,
+    });
+    navigate("/dashboard");
+  };
 
   //preLoad
   const [loading, setLoading] = useState(false);
